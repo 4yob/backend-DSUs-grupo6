@@ -20,6 +20,19 @@ class Jogo {
         return this.jogadores;
     }
 
+    removerAluno(grupo, aluno) {
+        // Método que remove um aluno do jogo
+        const alunoProcurado = this.alunos.filter((aluno) => aluno.grupo !== grupo || aluno.nome !== nome);
+
+        if (!alunoProcurado) {
+        return "Aluno não encontrado";
+        }
+        
+        this.alunos = alunoProcurado.delete(aluno);
+        return "Aluno removido com sucesso";
+    
+        return this.alunos;
+    }   
 }
 
 
