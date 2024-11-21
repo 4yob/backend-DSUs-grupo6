@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Repositório direcionado a atividade de Back-End para o desenvolvimente de um jogo referente a AmongUs.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
   },
   "keywords": [
     "SENAI",
