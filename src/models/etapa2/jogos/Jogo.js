@@ -1,5 +1,4 @@
-import e = require("express");
-
+// Objetivo: Definir a classe Jogos.
 class Jogos {
     constructor(aluno, jogadores, grupos, chat) {
         this.aluno = aluno;
@@ -11,6 +10,7 @@ class Jogos {
     generateId() {
         return Math.floor(Math.random() * 999) + 1;
     }
+ 
 }
 
 
