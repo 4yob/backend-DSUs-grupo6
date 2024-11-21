@@ -1,9 +1,9 @@
 // Objetivo: Definir a classe Jogos.
 class Jogo {
     constructor(alunos, jogadores, grupos, chat) {
-        this.alunos = [];
-        this.jogadores = [];
-        this.grupos = [];
+        this.alunos = alunos;
+        this.jogadores = jogadores;
+        this.grupos = grupos;
         this.chat = null;
     }
 
@@ -12,9 +12,25 @@ class Jogo {
     }
 
     mostrarAlunos() {
-        return this.alunos.filter((alunos) => alunos.grupos === grupos && (nome || alunos.nome));
+        return this.alunos.map((aluno) => {
+            return {
+                nome: aluno.nome,
+                turma: aluno.turma
+            }
+        });
     }
- 
+
+    mostrarJogadores(jogadores) {
+        // Método que retorna o nome e a turma de cada jogador do array de jogadores
+        return jogadores.map((jogador) => {
+            return {
+                nome: jogador.nome,
+                turma: jogador.turma
+            }
+        });
+
+    }
+
 }
 
 
