@@ -1,0 +1,21 @@
+{
+  "name": "backend-dsus-grupo6",
+  "version": "1.0.0",
+  "description": "Repositório direcionado a atividade de Back-End para o desenvolvimente de um jogo referente a AmongUs.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SENAI",
+    "JavaScript",
+    "Jogo",
+    "Dev",
+    "DSUs",
+    "Sabotador",
+    "Jogador",
+    "Aluno"
+  ],
+  "author": "Alejandra Bruna Laura AnaCarol Evelyn",
+  "license": "MIT"
+}
