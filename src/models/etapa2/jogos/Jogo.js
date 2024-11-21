@@ -12,23 +12,12 @@ class Jogo {
     }
 
     mostrarAlunos() {
-        return this.alunos.map((aluno) => {
-            return {
-                nome: aluno.nome,
-                turma: aluno.turma
-            }
-        });
+        return this.alunos;
     }
 
-    mostrarJogadores(jogadores) {
-        // Método que retorna o nome e a turma de cada jogador do array de jogadores
-        return jogadores.map((jogador) => {
-            return {
-                nome: jogador.nome,
-                turma: jogador.turma
-            }
-        });
-
+    mostrarJogadores() {
+    // Método que retorna o nome e a turma de cada jogador do array de jogadores
+        return this.jogadores;
     }
 
 }
