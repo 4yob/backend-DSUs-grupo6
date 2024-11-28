@@ -1,4 +1,4 @@
-import Jogo from "./Jogo.js"
+import Jogo from "../../jogos/Jogo.js"
 
 const teste1 = new Jogo("Ale", "Aleeeeeeee", 6, null);
 const teste2 = new Jogo("Eve", "Eveee", 6, null);

@@ -13,5 +13,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(serverPort, () => {
-    console.log(`😼 Server started on http://localhost:${serverPort}`)
+console.log(`😼 Server started on http: //localhost:${serverPort}`)
 });
