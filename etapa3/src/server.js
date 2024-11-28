@@ -1,5 +1,6 @@
 import express from "express";
 import { config } from "dotenv";
+import rotas from "./routes/indexRoutes.js";
 
 config();
 
@@ -7,6 +8,7 @@ const serverPort = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
+app.use(rotas);
 
 app.get("/", (req, res) => {
     return res.status(200).json({ message: "Hello, World!" });
