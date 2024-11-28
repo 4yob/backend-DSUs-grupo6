@@ -19,21 +19,15 @@ class Jogo {
     // Método que retorna o nome e a turma de cada jogador do array de jogadores
         return this.jogadores;
     }
-
-    removerAluno(grupo, aluno) {
         // Método que remove um aluno do jogo
-        const alunoProcurado = this.alunos.filter((aluno) => aluno.grupo !== grupo || aluno.nome !== nome);
-
-        if (!alunoProcurado) {
-        return "Aluno não encontrado";
+        removerAluno(name) {
+            const aluno = this.alunos.findIndex((a) => a.name === name);
+            if  (aluno === -1) {
+                return null;
+            }
+            return this.alunos.splice(aluno, 1)[0];
         }
-        
-        this.alunos = alunoProcurado.delete(aluno);
-        return "Aluno removido com sucesso";
-    
-        return this.alunos;
     }   
-}
 
 
 export default Jogo;
