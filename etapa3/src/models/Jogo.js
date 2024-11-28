@@ -1,9 +1,9 @@
-import Sabotador from "./Sabotador.js";
-import Dev from "./Dev.js";
-import Chat from "./Chat.js";
-import Quiz from "./Quiz.js";
+import Sabotador from "./Sabotador.js"; // Importa a classe Sabotador
+import Dev from "./Dev.js"; // Importa a classe Dev
+import Chat from "./Chat.js"; // Importa a classe Chat
+import Quiz from "./Quiz.js"; // Importa a classe Quiz
 
-class Jogo {
+class Jogo { // Define a classe Jogo
   constructor() {
     this.alunos = [];
     this.jogadores = [];
@@ -13,10 +13,10 @@ class Jogo {
     this.votacaoAtiva = false;    
     this.quizzes = new Quiz();
   }
-
+// Verifica se o nome do aluno já existe
   verificarNomeExistente(nome) {
-    if (/\d/.test(nome)) {
-      throw new Error("Nome não pode conter números. Escolha outro.");
+    if (/\d/.test(nome)) { // Verifica se a string nome contém algum dígito usando uma expressão regular.
+      throw new Error("Nome não pode conter números. Escolha outro."); // Se contiver um dígito, lança um erro com a mensagem: "Nome não pode conter números. Escolha outro."
     }
 
     const nomeExistente = this.alunos.some(
@@ -26,7 +26,7 @@ class Jogo {
       throw new Error(`Aluno com nome ${nome} já existe. Escolha outro.`);
     }
   }
-
+// Verifica se o apelido do aluno já existe
   verificarApelidoExistente(apelido) {
     const apelidoExistente = this.alunos.some(
       (a) => String(a.apelido) === String(apelido)
@@ -35,16 +35,16 @@ class Jogo {
       throw new Error(`Aluno com apelido ${apelido} já existe. Escolha outro.`);
     }
   }
-
+// Adiciona um aluno
   adicionarAluno(aluno) {
     this.alunos.push(aluno);
   }
-
+// Mostra os alunos
   mostrarAlunos(grupo = null, nome = null) {
     if (this.alunos.length === 0) {
       throw new Error("Não há alunos cadastrados.");
     }
-
+// Filtra os alunos
     const alunosFiltrados = this.alunos.filter(
       (a) =>
         (!grupo || a.grupo == grupo) &&
@@ -54,36 +54,36 @@ class Jogo {
     if (alunosFiltrados.length === 0) {
       throw new Error("Nenhum aluno encontrado para os filtros especificados.");
     }
-
-    const alunosAgrupados = alunosFiltrados.reduce((acc, aluno) => {
-      const grupoKey = `Grupo ${aluno.grupo}`;
-      if (!acc[grupoKey]) acc[grupoKey] = [];
-      acc[grupoKey].push({
+// Agrupa os alunos
+    const alunosAgrupados = alunosFiltrados.reduce((acc, aluno) => { // Usa a função reduce para agrupar os alunos filtrados em um objeto acumulador acc.
+      const grupoKey = `Grupo ${aluno.grupo}`; // Cria uma chave para o grupo baseado na propriedade grupo de cada aluno.
+      if (!acc[grupoKey]) acc[grupoKey] = []; // Se o grupo ainda não existir no objeto acumulador, cria um novo array para esse grupo.
+      acc[grupoKey].push({ // Adiciona o aluno ao array do grupo correspondente.
         Nome: aluno.nome,
         Apelido: aluno.apelido,
         EstaVivo: aluno.estaVivo,
         LocalAtual: aluno.localAtual,
       });
-      return acc;
-    }, {});
-
-    const resultadoFinal = Object.entries(alunosAgrupados)
-      .sort(([keyA], [keyB]) => keyA.localeCompare(keyB))
+      return acc; // Retorna o objeto acumulador para a próxima iteração.
+    }, {}); // Inicializa o objeto acumulador como um objeto vazio.
+// Ordena os alunos
+    const resultadoFinal = Object.entries(alunosAgrupados) // Converte o objeto acumulador em um array de arrays, onde cada subarray contém a chave e o valor de cada propriedade do objeto.
+      .sort(([keyA], [keyB]) => keyA.localeCompare(keyB)) // Ordena o array de arrays com base na chave de cada subarray. 
       .reduce((acc, [grupo, alunos]) => {
         const quantidade = alunos.length;
-        acc[`${grupo} com ${quantidade} aluno${quantidade > 1 ? "s" : ""}`] =
-          alunos;
+        acc[`${grupo} com ${quantidade} aluno${quantidade > 1 ? "s" : ""}`] = // Adiciona uma nova propriedade ao objeto final com a chave contendo o nome do grupo e a quantidade de alunos no grupo.
+          alunos; 
         return acc;
       }, {});
 
     const tabelaConsole = alunosFiltrados
-      .sort((a, b) => {
+      .sort((a, b) => { // Ordena os alunos filtrados com base no grupo e no nome.
         if (a.grupo === b.grupo) {
-          return a.nome.localeCompare(b.nome);
+          return a.nome.localeCompare(b.nome); // Se os grupos forem iguais, ordena os alunos pelo nome.
         }
         return a.grupo - b.grupo;
       })
-      .map((aluno) => ({
+      .map((aluno) => ({ // Mapeia os alunos filtrados para um novo array de objetos com as propriedades Grupo, Nome, Apelido, Senha, EstaVivo e LocalAtual.
         Grupo: aluno.grupo,
         Nome: aluno.nome,
         Apelido: aluno.apelido,
@@ -91,18 +91,18 @@ class Jogo {
         EstaVivo: aluno.estaVivo,
         LocalAtual: aluno.localAtual,
       }));
-
+// Exibe a tabela
     console.table(tabelaConsole);
-
+// Retorna o resultado final
     return resultadoFinal;
   }
-
+// Remove um aluno
   removerAluno(nome) {
-    const aluno = this.alunos.findIndex((a) => a.nome === nome);
+    const aluno = this.alunos.findIndex((a) => a.nome === nome); // Procura o índice do aluno na lista this.alunos cujo nome corresponda ao nome fornecido.
     if (aluno === -1) {
       return null;
     }
-    return this.alunos.splice(aluno, 1)[0];
+    return this.alunos.splice(aluno, 1)[0]; ]; // Se o aluno for encontrado, remove-o da lista e retorna o objeto aluno removido.
   }
 
   mostrarJogadores(dados) {
