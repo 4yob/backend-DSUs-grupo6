@@ -62,8 +62,23 @@ cadastroRoutes.put("/atualizar:id", (req, res) => {
     })
 });
 
-cadastroRoutes.delete("/remover", (req, res) => {
+cadastroRoutes.delete("/remover:id", (req, res) => {
+    const { id } = req.params
 
+    const aluno = alunos.find((student) => student.id === Number(id))
+
+    if(!aluno) {
+        return res.status(404).send({
+            message: "Aluno não encontrado!"
+        })
+    }
+
+    alunos = alunos.filter((student) => student.id !== Number(id))
+
+    return res.status(200).send({
+        message: "Aluno removido com sucesso!",
+        aluno,
+    })
 });
 
 export default cadastroRoutes;
