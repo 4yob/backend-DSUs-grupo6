@@ -12,26 +12,25 @@ class Jogo {
     }
 
     mostrarAlunos() {
-        return this.alunos.map((aluno) => {
-            return {
-                nome: aluno.nome,
-                turma: aluno.turma
-            }
-        });
+        return this.alunos;
     }
 
-    mostrarJogadores(jogadores) {
-        // Método que retorna o nome e a turma de cada jogador do array de jogadores
-        return jogadores.map((jogador) => {
-            return {
-                nome: jogador.nome,
-                turma: jogador.turma
-            }
-        });
-
+    mostrarJogadores() {
+    // Método que retorna o nome e a turma de cada jogador do array de jogadores
+        return this.jogadores;
     }
 
-    iniciarJogo() {
+        // Método que remove um aluno do jogo
+        removerAluno(name) {
+            const aluno = this.alunos.findIndex((a) => a.name === name);
+            if  (aluno === -1) {
+                return null;
+            }
+            return this.alunos.splice(aluno, 1)[0];
+        }
+
+
+        iniciarJogo() {
         // Converter alunos em jogadores
         this.jogadores = this.alunos.map(aluno => {
             return { nome: aluno.nome, turma: aluno.turma, tipo: 'jogador' };
@@ -50,9 +49,7 @@ class Jogo {
         });
 
         console.log("Jogadores:", this.jogadores);
-    }
-
-}
-
+     }
+    }   
 
 export default Jogo;
