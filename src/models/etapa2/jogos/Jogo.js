@@ -1,10 +1,10 @@
 // Objetivo: Definir a classe Jogos.
 class Jogo {
-    constructor(alunos, jogadores, grupos, chat) {
+    constructor(alunos, jogadores, grupos, chat = null) {
         this.alunos = alunos;
         this.jogadores = jogadores;
         this.grupos = grupos;
-        this.chat = null;
+        this.chat = chat;
     }
 
     generateId() {
@@ -29,6 +29,27 @@ class Jogo {
             }
         });
 
+    }
+
+    iniciarJogo() {
+        // Converter alunos em jogadores
+        this.jogadores = this.alunos.map(aluno => {
+            return { nome: aluno.nome, turma: aluno.turma, tipo: 'jogador' };
+        });
+
+        // Escolher aleatoriamente um grupo como sabotadores
+        const numSabotadores = Math.floor(this.jogadores.length);
+        const indicesSabotadores = new Set();
+        while (indicesSabotadores.size < numSabotadores) {
+            const index = Math.floor(Math.random() * this.jogadores.length);
+            indicesSabotadores.add(index);
+        }
+
+        Array.from(indicesSabotadores).forEach(index => {
+            this.jogadores[index].tipo = 'sabotador';
+        });
+
+        console.log("Jogadores:", this.jogadores);
     }
 
 }
