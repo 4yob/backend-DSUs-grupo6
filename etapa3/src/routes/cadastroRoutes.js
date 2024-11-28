@@ -1,8 +1,11 @@
 import { Router } from "express";
+import Jogo from "../../../etapa2/src/models/Jogo.js";
 
 const cadastroRoutes = Router();
 
+const jogoLista = new Jogo();
 let alunos = []
+
 
 cadastroRoutes.post("/adicionar", (req, res) => {
     const {name, idade, turma} = req.body
@@ -33,7 +36,7 @@ cadastroRoutes.post("/adicionar", (req, res) => {
 });
 
 cadastroRoutes.get("/listar", (req, res) => {
-
+    return res.status(200).send(alunos);
 });
 
 cadastroRoutes.put("/atualizar", (req, res) => {
