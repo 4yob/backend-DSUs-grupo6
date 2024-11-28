@@ -39,8 +39,27 @@ cadastroRoutes.get("/listar", (req, res) => {
     return res.status(200).send(alunos);
 });
 
-cadastroRoutes.put("/atualizar", (req, res) => {
+cadastroRoutes.put("/atualizar:id", (req, res) => {
+    const{ id } =req.params
 
+    const aluno = alunos.find((student) => student.id === Number(id))
+
+    if(!aluno){
+        return res.status(404).send({
+            message: "Aluno não encontrado!"
+        })
+    }
+
+    const {name, idade, turma} = req.body
+
+    aluno.name = name
+    aluno.idade = idade
+    aluno.turma = turma
+
+    return res.status(200).send({
+        message: "Aluno atualizado!",
+        aluno,
+    })
 });
 
 cadastroRoutes.delete("/remover", (req, res) => {
