@@ -31,3 +31,9 @@ mostrarJogadores(dados): Exibe informações detalhadas dos jogadores.
 iniciarJogo(): Converte os alunos em jogadores e escolhe aleatoriamente um grupo como sabotadores.
 
 ![Diagrama UML](media/UML%20DS%20US-%20grupo%206.jpg)
+
+## Etapa 3 
+
+Evelyn: Realizou a organização das pastas e comentou alguns códigos
+Ana Carolina e Bruna: Comentou os códigos das classes
+Alejandra e Laura: Criou os métodos CRUD
