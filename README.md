@@ -34,6 +34,8 @@ iniciarJogo(): Converte os alunos em jogadores e escolhe aleatoriamente um grupo
 
 ## Etapa 3 
 
-Evelyn: Realizou a organização das pastas e comentou alguns códigos
-Ana Carolina e Bruna: Comentou os códigos das classes
-Alejandra e Laura: Criou os métodos CRUD
+Evelyn: Realizou a organização das pastas e comentou o código do CRUD;
+Alejandra: Realizou os métodos GET e DELETE;
+Laura Realizou os métodos POST e PUT;
+Ana Carolina: Comentou o arquivo Jogo.js presente na pasta Models da etapa 3 da linha 1 até linha 105;
+Bruna: Comentou o arquivo Jogo.js presente na pasta Models da etapa 3 da linha 105 até a linha 219.
